@@ -1,0 +1,45 @@
+<head>
+  <title>teste</title>
+</head>
+
+<body>
+  {{> tarefas}}
+</body>
+
+<template name="tarefas">
+  <h1>Lista de Tarefas</h1>
+  <input id="txtTarefas" type="text" />
+  <button class="btn btn-primary" id="btnInserir">Inserir</button>
+ 
+  <table class="table"  style="width:300px">
+  	<thead>
+      <th></th>
+  		<th>Tarefa</th>
+  		<th></th>
+  	</thead>
+  	<tbody>
+      {{#each lista}}
+    		{{> itemTarefa }}
+      {{/each}}
+  </table>
+
+  <a id="lkTodos"> Todos </a>
+  <a id="lkCompleto"> Completo </a>
+  <a id="lkPendente"> Pendentes </a>
+   
+
+</template>
+
+<template name="itemTarefa">
+    <tr>
+        <td><input type="checkbox" class="ckCompleto" {{completo}} /></td>
+        <td> 
+            {{#if editarTexto}}
+                <input type="text" class="txtNome" value="{{nome}}" />
+            {{else}}
+                  <span  class="lblNome"> {{nome}}</span>
+            {{/if}}
+        </td>
+        <td><button class="btn btn-danger btnExcluir" >Remover</button> </td>S
+    </tr>
+</template>
